@@ -1,2 +1,1 @@
-# ls
-Recreation of unix binary ls
+# ft_lsishe

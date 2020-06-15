@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slavanya <slavanya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/10 14:11:37 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/29 20:31:28 by dbutterw         ###   ########.fr       */
+/*   Created: 2020/02/21 00:00:11 by slavanya          #+#    #+#             */
+/*   Updated: 2020/03/30 14:20:11 by slavanya         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "nodes.h"
+#include "ls.h"
 
-int			main(int argc, char **argv)
+int     main(int argc, char **argv)
 {
-	char	flags[N_FLAGS];
-	t_nodes	*head;
+	int		skip;
+	t_flags	*flags;
+	t_list	*nodes;
 
-	ft_get_flags(&argc, &argv, flags);
-	head = NULL;
-	if (!argc)
-		ft_get_node(&head, ".", flags);
-	while (argc--)
-		ft_get_node(&head, *argv++, flags);
-	ft_all_print(flags, &head);
-	return (0);
+	flags = init_flags();
+    skip = parse_flags(flags, argc, argv);
+    nodes = parse_args(argc, argv, skip, flags);
+    print_args(nodes, flags);
+	ft_lstdelone(&nodes, (void (*)(void *)) &del_node);
+    del_flags(&flags);
+    return (0);
 }
