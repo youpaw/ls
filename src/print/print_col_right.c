@@ -4,7 +4,8 @@
 
 #include "str_lib.h"
 
-void print_col_right(void *data, int (*print)(void *), int (*len)(void *), int width)
+void print_col_right(void *data, int (*print)(void *), int (*len)(void *), \
+	int width)
 {
 	int cnt;
 

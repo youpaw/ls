@@ -10,6 +10,7 @@
 # define LN_PADDING 1
 
 #include "srcs.h"
+#include <zconf.h>
 
 struct  s_max_values{
 	int		links;

@@ -8,7 +8,6 @@
 #include <print_line.h>
 #include <sys/xattr.h>
 #include <sys/acl.h>
-# include <dirent.h>
 # include <sys/stat.h>
 
 static char		get_file_type(int mode)
@@ -33,18 +32,18 @@ static char		get_file_type(int mode)
 }
 
 
-static char		get_file_acl(char path[PATH_MAX])
+static char		get_file_acl(char path[MAX_PATHLEN])
 {
-//	acl_t	tmp;
-//	char	buf[101];
-//
-//	if (listxattr(path, buf, sizeof(buf), XATTR_NOFOLLOW) > 0)
-//		return ('@');
-//	if ((tmp = acl_get_link_np(path, ACL_TYPE_EXTENDED)))
-//	{
-//		acl_free(tmp);
-//		return ('+');
-//	}
+	acl_t	tmp;
+	char	buf[101];
+
+	if (listxattr(path, buf, sizeof(buf), XATTR_NOFOLLOW) > 0)
+		return ('@');
+	if ((tmp = acl_get_link_np(path, ACL_TYPE_EXTENDED)))
+	{
+		acl_free(tmp);
+		return ('+');
+	}
 	return (' ');
 }
 

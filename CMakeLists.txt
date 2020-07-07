@@ -60,7 +60,7 @@ add_executable(clion_ls
         src/print/line/get_max_values.c
         src/print/line/print_nlink.c
         src/print/line/print_uid.c
-        src/print/line/print._gid.c
+        src/print/line/print_gid.c
         src/print/line/print_size.c
         src/print/print_name.c
         src/print/print_name_endl.c

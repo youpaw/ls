@@ -13,11 +13,11 @@ int		cmp_nodes(t_node *node1, t_node *node2, t_flags *flags)
 		return (-1);
 	ret = 0;
 	if (flags->sort == f_mtime)
-		ret = node2->info.st_mtim.tv_sec - node1->info.st_mtim.tv_sec;
+		ret = node2->info.st_mtimespec.tv_sec - node1->info.st_mtimespec.tv_sec;
 	else if (flags->sort == f_ctime)
-		ret = node2->info.st_ctim.tv_sec - node1->info.st_ctim.tv_sec;
+		ret = node2->info.st_ctimespec.tv_sec - node1->info.st_ctimespec.tv_sec;
 	else if (flags->sort == f_atime)
-		ret = node2->info.st_atim.tv_sec - node1->info.st_atim.tv_sec;
+		ret = node2->info.st_atimespec.tv_sec - node1->info.st_atimespec.tv_sec;
 	else if (flags->sort == f_size)
 		ret = node2->info.st_size - node1->info.st_size;
 	if (ret == 0)

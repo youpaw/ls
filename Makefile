@@ -6,27 +6,112 @@
 #    By: hlorrine <hlorrine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/21 22:10:19 by hlorrine          #+#    #+#              #
-#    Updated: 2020/01/27 19:58:44 by hlorrine         ###   ########.fr        #
+#    Updated: 2020/07/07 16:59:59 by dbutterw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-SRC =  ft_putnbr_fd.c ft_putendl_fd.c ft_putstr_fd.c ft_putchar_fd.c ft_putnbr.c ft_putendl.c ft_putstr.c ft_putchar.c ft_itoa.c ft_strsplit.c ft_strtrim.c ft_strjoin.c ft_strsub.c ft_strnequ.c ft_strequ.c ft_strmapi.c ft_strmap.c ft_striteri.c ft_striter.c ft_strclr.c ft_strdel.c ft_strnew.c ft_memdel.c ft_tolower.c ft_toupper.c ft_isprint.c ft_isascii.c ft_isalnum.c ft_isdigit.c ft_isalpha.c ft_atoi.c ft_strncmp.c ft_strcmp.c ft_strnstr.c ft_strstr.c ft_strrchr.c ft_memset.c ft_memalloc.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_lstnew.c ft_lsdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_freesher.c ft_wordcount.c ft_reverselst.c ft_realloc.c ft_countalpha.c get_next_line.c ft_atoi_base.c ft_put_errno.c
-O = ft_putnbr_fd.o ft_putendl_fd.o ft_putstr_fd.o ft_putchar_fd.o ft_putnbr.o ft_putendl.o ft_putstr.o ft_putchar.o ft_itoa.o ft_strsplit.o ft_strtrim.o ft_strjoin.o ft_strsub.o ft_strnequ.o ft_strequ.o ft_strmapi.o ft_strmap.o ft_striteri.o ft_striter.o ft_strclr.o ft_strdel.o ft_strnew.o ft_memdel.o ft_tolower.o ft_toupper.o ft_isprint.o ft_isascii.o ft_isalnum.o ft_isdigit.o ft_isalpha.o ft_atoi.o ft_strncmp.o ft_strcmp.o ft_strnstr.o ft_strstr.o ft_strrchr.o ft_memset.o ft_memalloc.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strdup.o ft_strcpy.o ft_strncpy.o ft_strcat.o ft_strncat.o ft_strlcat.o ft_strchr.o ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o ft_freesher.o ft_wordcount.o ft_reverselst.o ft_realloc.o ft_countalpha.o get_next_line.o ft_atoi_base.o ft_put_errno.o
+SRCS :=	ls_strcmp.c				\
+		main.c					\
+		parse_args.c			\
+		print_args.c			\
+		flags/del_flags.c		\
+		flags/flags_error.c		\
+		flags/get_flag.c		\
+		flags/init_flags.c		\
+		flags/parse_flags.c		\
+		nodes/cmp_nodes.c		\
+		nodes/del_node.c		\
+		nodes/get_dir_node.c	\
+		nodes/get_file_node.c	\
+		nodes/get_node.c		\
+		srcs/cmp_srcs.c			\
+		srcs/del_src.c			\
+		srcs/get_srcs.c			\
+		srcs/init_src.c			\
+		print/init_dir_path.c 			\
+		print/print_col.c 			\
+		print/print_col_right.c 			\
+		print/print_dir_node.c 			\
+		print/print_error.c 			\
+		print/print_file_node.c 			\
+		print/print_name.c 			\
+		print/print_name_endl.c 			\
+		print/print_node.c 			\
+		print/print_srcs.c 			\
+		print/col/init_col_attr.c 		\
+		print/col/print_src.c 		\
+		print/col/print_srcs_col.c 		\
+		print/col/walk_srcs_col.c 		\
+		print/col/walk_srcs_row.c 		\
+		print/line/get_human_readable.c 			\
+		print/line/get_max_values.c 			\
+		print/line/print_gid.c 			\
+		print/line/print_date.c 			\
+		print/line/print_link.c 			\
+		print/line/print_mode.c 			\
+		print/line/print_nlink.c 			\
+		print/line/print_size.c 			\
+		print/line/print_srcs_line.c 			\
+		print/line/print_total.c 			\
+		print/line/print_uid.c
+
+SRC_DIR := ./src
+
+LIB_DIR := ./libft
+
+INC :=	-I ./includes			\
+			-I $(LIB_DIR)			\
+			-I $(LIB_DIR)/char		\
+			 -I $(LIB_DIR)/env		\
+			 -I $(LIB_DIR)/file		\
+			 -I $(LIB_DIR)/list		\
+			 -I $(LIB_DIR)/math		\
+			 -I $(LIB_DIR)/memory	\
+			 -I $(LIB_DIR)/num		\
+			 -I $(LIB_DIR)/regex	\
+			 -I $(LIB_DIR)/string	\
+			 -I $(LIB_DIR)/vector	\
+			 -I $(LIB_DIR)/search
+
+OBJ_DIR := ./obj
+
+CMP_DIR	:= $(OBJ_DIR)/flags		\
+			$(OBJ_DIR)/nodes	\
+			$(OBJ_DIR)/srcs		\
+			$(OBJ_DIR)/print	\
+			$(OBJ_DIR)/print/col\
+			$(OBJ_DIR)/print/line
+
+OBJ	:= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
+
+CFLAGS	:= -Wall -Wextra -Werror
+
+LFLAGS	:= -L $(LIB_DIR) -lft
+
+NAME = ft_ls
+
+.PHONY: all clean lib fclean re
 
 all: $(NAME)
 
-$(NAME): $(O)
-		@ar rc $(NAME) $(O)
-		@ranlib $(NAME)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR) $(CMP_DIR)
 
-$(O): %.o: %.c
-		@gcc -Wall -Wextra -Werror -c $^
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	gcc $(CFLAGS) $(INC) -o $@ -c $<
+
+$(NAME): $(OBJ_DIR) $(OBJ) | lib
+	gcc -o $(NAME) $(OBJ) $(LFLAGS)
+
+lib:
+	make -C $(LIB_DIR)
 
 clean:
-		@/bin/rm -f $(O)
+	rm -rf $(OBJ_DIR) $(CMP_DIR)
+	make clean -C $(LIB_DIR)
 
 fclean: clean
-		@/bin/rm -f $(NAME)
+	rm -f $(NAME)
+	make fclean -C $(LIB_DIR)
 
 re: fclean all

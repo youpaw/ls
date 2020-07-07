@@ -8,5 +8,5 @@
 
 void 	print_gid(char *gid, int max_gid)
 {
-	print_col(gid, ft_putstr, max_gid + LN_PADDING);
+	print_col(gid, (int (*)(void *)) ft_putstr, max_gid + LN_PADDING);
 }
